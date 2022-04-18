@@ -1,0 +1,26 @@
+{
+  "REPORT": {
+    "SURFACE OBSERVATION": {
+      "1": "Not painted aluminium surface",
+      "2": "Black painted aluminium surface",
+      "3": "Glass surface"
+    },
+    "CONTACT TEMPERATURE OBSERVATION": {
+      "1": "Question 1",
+      "2": "Question 2",
+      "3": "Question 3"
+    },
+    "THERMAL APPROACH OF ELECTRIC PHENOMENA": {
+      "1": "Question 1",
+      "2": "Question 2",
+      "3": "Question 3"
+    },
+    "HEAT TRANSFER IN FINS": {
+      "1": "Question 1",
+      "2": "Question 2",
+      "3": "Question 3"
+    },
+    "CONCLUSION": {}
+  }
+}
+

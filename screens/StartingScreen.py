@@ -10,10 +10,12 @@ class StartingScreen(QWidget):
         super(StartingScreen, self).__init__()
         loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\StartingScreen.ui', self)
         self.input_name.textChanged.connect(self.input_changed)
+        # self.input_promotion.textChanged.connect(self.input_changed)
         self.btn_start.clicked.connect(self.starting)
 
     def input_changed(self):
         updateData("name", self.input_name.text())
+        # updateData("promotion", self.input_promotion.text())
 
     def starting(self):
         from navigator.MainNavigator import MainNavigator, MainWindow
