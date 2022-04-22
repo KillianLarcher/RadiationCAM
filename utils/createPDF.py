@@ -1,8 +1,12 @@
+from _datetime import date
+
 import roman as roman
 from fpdf import FPDF
-from dataManager import getDatas
+from utils.dataManager import getDatas
 
-title = 'RadiationCAM report'
+title = 'RadiationCAM Report'
+
+name = getDatas('user')['PERSONAL']['name']
 
 
 class PDF(FPDF):
@@ -12,20 +16,25 @@ class PDF(FPDF):
         self.add_page()
 
     def header(self):
-        # Arial bold 15
-        self.set_font('Arial', 'B', 15)
-        # Calculate width of title and position
+        self.set_draw_color(255, 255, 255)
+        self.set_fill_color(255, 255, 255)
+        self.set_text_color(0, 0, 0)
+
+        # name of the student
+        self.set_font('Arial', '', 11)
+        w = self.get_string_width(name) + 6
+        self.cell(w, 9, name, 1, 0, 'C', 1)
+        w = self.get_string_width(str(date.today())) + 275
+        self.cell(w, 9, str(date.today()), 1, 1, 'C', 1)
+
+        # title of the report
+        self.set_font('Arial', 'B', 18)
         w = self.get_string_width(title) + 6
         self.set_x((210 - w) / 2)
-        # Colors of frame, background and text
-        self.set_draw_color(0, 80, 180)
-        self.set_fill_color(230, 230, 0)
-        self.set_text_color(220, 50, 50)
         # Thickness of frame (1 mm)
         self.set_line_width(1)
-        # Title
         self.cell(w, 9, title, 1, 1, 'C', 1)
-        # Line break
+
         self.ln(10)
 
     def footer(self):
@@ -49,7 +58,6 @@ class PDF(FPDF):
         self.ln(4)
 
     def question_title(self, num, label):
-
         # Arial 12
         self.set_font('Arial', 'B', 12)
         # Background color
@@ -93,9 +101,13 @@ for chapter in permanent_report:
     i = i + 1
     j = 0
     pdf.chapter_title(roman.toRoman(i), chapter)
-    for key_question, value_question in permanent_report[chapter].items():
-        j = j + 1
-        pdf.question_title(j, value_question)
-        pdf.chapter_body(user_report[chapter][key_question])
 
-pdf.output('report.pdf')
+    if not isinstance(permanent_report[chapter], str):
+        for key_question, value_question in permanent_report[chapter].items():
+            j = j + 1
+            pdf.question_title(j, value_question)
+            pdf.chapter_body(user_report[chapter][key_question])
+    else:
+        pdf.chapter_body(user_report[chapter])
+
+pdf.output('../report.pdf')

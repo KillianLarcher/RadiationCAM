@@ -12,7 +12,7 @@ class MainWindowScreen(QMainWindow):
 
     def __init__(self):
         super(MainWindowScreen, self).__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\MainWindow.ui', self)
+        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\MainScreen.ui', self)
 
         self.verticalMenu.setFeatures(QDockWidget.NoDockWidgetFeatures)
         self.verticalMenu.setTitleBarWidget(QWidget())

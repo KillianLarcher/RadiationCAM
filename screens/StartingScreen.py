@@ -1,25 +1,18 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget
+
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 from PyQt5.uic import loadUi
-from dataManager import updateData
+
+from Models.ScreenModel import Screen
 
 
-class StartingScreen(QWidget):
+class StartingScreen(QMainWindow, Screen):
 
     def __init__(self):
         super(StartingScreen, self).__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\StartingScreen.ui', self)
-        self.input_name.textChanged.connect(self.input_changed)
-        # self.input_promotion.textChanged.connect(self.input_changed)
-        self.btn_start.clicked.connect(self.starting)
-
-    def input_changed(self):
-        updateData("name", self.input_name.text())
-        # updateData("promotion", self.input_promotion.text())
-
-    def starting(self):
-        from navigator.MainNavigator import MainNavigator, MainWindow
-        MainNavigator.setCurrentWidget(MainWindow)
+        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\page_accueil_centrée.ui', self)
+        self.init_lineEdit("PERSONAL")
+        self.btn_next.clicked.connect(lambda: self.navigation('MainWindow'))
 
 
 if __name__ == '__main__':

@@ -1,3 +1,1 @@
-from dataManager import getData
-
-getData("name")
+import screens.MainScreen

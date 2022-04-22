@@ -6,7 +6,7 @@ class ReportScreen2(QWidget):
 
     def __init__(self):
         super(ReportScreen2, self).__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\next.ui', self)
+        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\Report\next.ui', self)
         self.pushButton.clicked.connect(self.previous_page)
 
     def previous_page(self):

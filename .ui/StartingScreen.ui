@@ -32,6 +32,9 @@
      <height>23</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">border : 2px solid #222;</string>
+   </property>
    <property name="text">
     <string>start !</string>
    </property>
