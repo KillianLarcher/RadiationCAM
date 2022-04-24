@@ -1,8 +1,6 @@
-import sys
-from PyQt5.QtWidgets import QStackedWidget, QApplication
+from PyQt5.QtWidgets import QStackedWidget
 
-from screens.StartingScreen import StartingScreen
-from screens.Report.MainWindowScreen import MainWindowScreen
+from Models.ScreenModel import MainWindowScreen, StartingScreen
 
 MainNavigator = QStackedWidget()
 

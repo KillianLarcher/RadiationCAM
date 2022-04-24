@@ -6,112 +6,25 @@
     },
     "REPORT": {
         "SURFACE OBSERVATION": {
-            "1": "The user did not answer the question",
-            "2": "The user did not answer the question",
-            "3": "The user did not answer the question"
+            "1": "",
+            "2": "",
+            "3": ""
         },
         "CONTACT TEMPERATURE OBSERVATION": {
-            "1": "The user did not answer the question",
-            "2": "The user did not answer the question",
-            "3": "The user did not answer the question"
+            "4": "",
+            "5": "",
+            "6": ""
         },
         "THERMAL APPROACH OF ELECTRIC PHENOMENA": {
-            "1": "The user did not answer the question",
-            "2": "The user did not answer the question",
-            "3": "The user did not answer the question"
+            "7": "",
+            "8": "",
+            "9": ""
         },
         "HEAT TRANSFER IN FINS": {
-            "1": "The user did not answer the question",
-            "2": "The user did not answer the question",
-            "3": "The user did not answer the question"
+            "10": "",
+            "11": "",
+            "12": ""
         },
-        "CONCLUSION": "The user did not answer the question"
-    },
-    "PERSONAL['name1']": "Damien Domps",
-    "PERSONAL[\"name1\"]": "Damien Domps",
-    "Killian Larcd": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcdd": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcddd": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcdddd": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcc": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larccc": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcccc": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Florian Auni": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Florian Aun": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Florian Au": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Florian A": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Florian ": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcf": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcff": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcfff": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcffff": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
-    },
-    "Killian Larcfffff": {
-        "name1": "Killian Larc",
-        "name2": "Florian Aunis",
-        "name3": "Damien Domps"
+        "CONCLUSION": "conclusion"
     }
 }

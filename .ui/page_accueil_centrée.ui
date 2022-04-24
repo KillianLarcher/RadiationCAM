@@ -71,9 +71,9 @@
              </spacer>
             </item>
             <item>
-             <widget class="QSpinBox" name="selectnbretud">
-              <property name="maximum">
-               <number>3</number>
+             <widget class="QLabel" name="label_2">
+              <property name="text">
+               <string>Nom et prénom :</string>
               </property>
              </widget>
             </item>
@@ -234,19 +234,12 @@
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <widget class="QDateEdit" name="dateEdit"/>
-            </item>
-           </layout>
+           <layout class="QHBoxLayout" name="horizontalLayout_7"/>
           </item>
          </layout>
         </item>
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_5">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_8"/>
-          </item>
           <item>
            <spacer name="verticalSpacer">
             <property name="orientation">
