@@ -8,25 +8,38 @@ from utils.dataManager import getDatas, updateData
 
 class Screen(QWidget):
 
-    def __init__(self, *args):
-        super().__init__()
+    def __init__(self, section: str = '', chapter: str = '', screen_number: int = 0, picture: str = ''):
 
-    def init_LineEdit(self, section: str, chapter: str = '', screen_number: str = ''):
+        super().__init__()
+        self.section = section
+        self.chapter = chapter
+        self.screen_number = screen_number
+        self.picture = picture
+
+        try:
+            self.question_text = getDatas('permanent')[self.section][self.chapter]
+        except KeyError:
+            self.question_text = None
+
+    def init_LineEdit(self):
 
         for layouts in self.children():
             i = 0
             for widget in layouts.children():
                 if isinstance(widget, (QLineEdit, QTextEdit)):
-                    if chapter == '' and screen_number == '':
-                        widget.setText(getDatas("user")[section][widget.objectName()])
-                    elif chapter != '' and screen_number == '':
-                        widget.setText(getDatas("user")[section][chapter])
+
+                    if self.chapter == '' and self.screen_number == 0:
+                        widget.setText(getDatas("user")[self.section][widget.objectName()])
                     else:
-                        widget.setText(getDatas("user")[section][chapter][screen_number])
-                    widget.textChanged.connect(lambda: self.input_changed(section, chapter, screen_number))
+                        try:
+                            widget.setText(getDatas("user")[self.section][self.chapter])
+                        except:
+                            widget.setText(getDatas("user")[self.section][self.chapter][str(self.screen_number)])
+
+                    widget.textChanged.connect(lambda: self.input_changed())
                     i = i + 1
 
-    def input_changed(self, section: str, chapter: str = '', screen_number: str = ''):
+    def input_changed(self):
 
         new_datas = getDatas('user')
 
@@ -35,54 +48,104 @@ class Screen(QWidget):
             for widget in layouts.children():
                 if isinstance(widget, (QLineEdit, QTextEdit)):
 
-                    if chapter == '' and screen_number == '':
-                        new_datas[section][widget.objectName()] = widget.text()
-                    elif chapter != '' and screen_number == '':
-                        new_datas[section][chapter] = widget.toPlainText()
+                    if self.chapter == '' and self.screen_number == 0:
+                        new_datas[self.section][widget.objectName()] = widget.text()
+                    elif self.chapter != '' and self.screen_number == 0:
+                        new_datas[self.section][self.chapter] = widget.toPlainText()
                     else:
-                        new_datas[section][chapter][screen_number] = widget.toPlainText()
+                        new_datas[self.section][self.chapter][self.screen_number] = widget.toPlainText()
 
                     updateData('user', new_datas)
                     i = i + 1
 
-    def init_Label(self, title: str, question: str, image):
+    def init_Label(self):
+
+        if isinstance(self.question_text, dict):
+            self.setLabel("title", self.chapter)
+            self.setLabel("question", self.question_text[str(self.screen_number)])
+            self.setLabel("image", self.picture)
+
+        if isinstance(self.question_text, str):
+            self.setLabel("title", self.chapter)
+            self.setLabel("question", self.question_text)
+            self.setLabel("image", self.picture)
+
+    def setLabel(self, title: str = '', text: str = ''):
+
+        path = 'C:/Users/Killian Larcher/Documents/GitHub/RadiationCAM/img'
 
         for layouts in self.children():
-            i = 0
+            if isinstance(layouts, QLabel):
+                if layouts.objectName() == title:
+                    if layouts.objectName() == 'image':
+                        pixmap = QPixmap(path+'/'+text)
+                        layouts.setPixmap(pixmap)
+                    else:
+                        # layouts.setTextFormat(1)
+                        layouts.setText(text)
+
             for widget in layouts.children():
                 if isinstance(widget, QLabel):
-                    if widget.objectName() == "title":
-                        widget.setText(title)
-                    if widget.objectName() == "question":
-                        widget.setText(question)
-                    if widget.objectName == "image":
-                        pixmap = QPixmap(image)
-                        widget.setPixmap(pixmap)
+                    if widget.objectName() == title:
+                        if widget.objectName() == 'image':
+                            pixmap = QPixmap(path+'/'+text)
+                            widget.setPixmap(pixmap)
+                        else:
+                            widget.setText(text)
 
     def navigation(self, goto: str):
 
         from navigator.Navigator import Navigators
-        from navigator.MainNavigator import MainWindow
+        from navigator.Navigator import MainWindow
 
         for nav in Navigators:
             if nav.objectName() == goto:
                 MainWindow.takeCentralWidget()
                 MainWindow.setCentralWidget(nav)
-                print(nav.objectName())
             for screen in nav.children():
                 if not isinstance(screen, QStackedLayout):
-                    print(screen.objectName())
                     if screen.objectName() == goto:
                         nav.setCurrentWidget(screen)
 
+    def init_navigation(self):
 
-class MainScreen(QMainWindow):
+        permanent_report = getDatas('permanent')[self.section]
+        max_number = 0
+
+        for title in permanent_report:
+            if not isinstance(permanent_report[title], str):
+                max_number = max_number + len(permanent_report[title].items())
+            else:
+                max_number = max_number + 1
+
+        if self.screen_number > 1:
+            self.btn_previous.clicked.connect(lambda: self.navigation(self.section + str(self.screen_number - 1)))
+        else:
+            self.btn_previous.hide()
+
+        if self.screen_number < max_number:
+            self.btn_next.clicked.connect(lambda: self.navigation(self.section + str(self.screen_number + 1)))
+        else:
+            self.btn_next.hide()
+
+
+class MainScreen(QMainWindow, Screen):
 
     def __init__(self):
-        super(MainScreen, self).__init__()
+        super().__init__()
         loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\AppScreen.ui', self)
-        from navigator.MainNavigator import MainNavigator
+        from navigator.Navigator import MainNavigator
         self.setCentralWidget(MainNavigator)
+
+
+class StartingScreen(QMainWindow, Screen):
+
+    def __init__(self, section: str):
+        super().__init__(section)
+
+        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\page_accueil_centrée.ui', self)
+        self.init_LineEdit()
+        self.btn_next.clicked.connect(lambda: self.navigation('MainWindow'))
 
 
 class MainWindowScreen(QMainWindow, Screen):
@@ -99,63 +162,26 @@ class MainWindowScreen(QMainWindow, Screen):
         self.btn_report.clicked.connect(lambda: self.navigation("REPORTNavigator"))
 
 
-class StartingScreen(QMainWindow, Screen):
-
-    def __init__(self):
-        super(StartingScreen, self).__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\page_accueil_centrée.ui', self)
-        self.init_LineEdit("PERSONAL")
-        self.btn_next.clicked.connect(lambda: self.navigation('MainWindow'))
-
-
 class StaticScreen(QMainWindow, Screen):
 
-    def __init__(self, *args):
-        super().__init__()
+    def __init__(self, section: str, chapter: str = '', screen_number: int = 0, picture: str = ''):
+        super().__init__(section, chapter, screen_number, picture)
+
         loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\Basics\MainBasicsScreen.ui', self)
 
+        self.init_navigation()
+        self.init_Label()
 
-class ReportScreen(QMainWindow, Screen):
 
-    def __init__(self, chapter: str, screen_number: int, image: str = ''):
+class DynamicScreen(QMainWindow, Screen):
 
-        super().__init__()
+    def __init__(self, section: str, chapter: str, screen_number: int = 0, picture: str = ''):
+        super().__init__(section, chapter, screen_number, picture)
+
         loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\Report\window_resum.ui', self)
 
-        self.chapter = chapter
-        self.screen_number = screen_number
-        self.image = image
+        self.init_navigation()
+        self.init_LineEdit()
+        self.init_Label()
 
         self.btn_pdf.clicked.connect(createPDF)
-
-        self.init_navigation()
-
-        self.question = getDatas('permanent')['REPORT'][self.chapter]
-
-        if not isinstance(self.question, str):
-            self.init_Label(self.chapter, self.question[str(self.screen_number)], self.image)
-            self.init_LineEdit("REPORT", self.chapter, str(self.screen_number))
-        else:
-            self.init_Label(self.chapter, self.question, self.image)
-            self.init_LineEdit("REPORT", self.chapter)
-
-    def init_navigation(self):
-
-        permanent_report = getDatas('permanent')['REPORT']
-        max_number = 0
-
-        for title in permanent_report:
-            if not isinstance(permanent_report[title], str):
-                max_number = max_number + len(permanent_report[title].items())
-            else:
-                max_number = max_number + 1
-
-        if self.screen_number > 1:
-            self.btn_previous.clicked.connect(lambda: self.navigation('REPORT' + str(self.screen_number - 1)))
-        else:
-            self.btn_previous.hide()
-
-        if self.screen_number < max_number:
-            self.btn_next.clicked.connect(lambda: self.navigation('REPORT' + str(self.screen_number + 1)))
-        else:
-            self.btn_next.hide()

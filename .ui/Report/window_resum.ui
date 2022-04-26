@@ -68,9 +68,9 @@
          </layout>
         </item>
         <item>
-         <widget class="QGraphicsView" name="graphicsView">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(186, 255, 161);</string>
+         <widget class="QLabel" name="image">
+          <property name="text">
+           <string>TextLabel</string>
           </property>
          </widget>
         </item>

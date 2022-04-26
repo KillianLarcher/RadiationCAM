@@ -6,9 +6,10 @@
     },
     "REPORT": {
         "SURFACE OBSERVATION": {
-            "1": "",
+            "1": "tes",
             "2": "",
-            "3": ""
+            "3": "",
+            "1": "test"
         },
         "CONTACT TEMPERATURE OBSERVATION": {
             "4": "",
