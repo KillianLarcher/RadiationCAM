@@ -1,7 +1,7 @@
 import json
 
-permanent = r"C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\datas\permanent_datas.json"
-user = r"C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\datas\user_datas.json"
+permanent = './datas/permanent_datas.json'
+user = './datas/user_datas.json'
 
 
 def getDatas(filename: str):

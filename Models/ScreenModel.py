@@ -76,7 +76,7 @@ class Screen(QWidget):
 
     def setLabel(self, title: str = '', content: str = ''):
 
-        path = 'C:/Users/Killian Larcher/Documents/GitHub/RadiationCAM'
+        path = ''
 
         for layouts in self.children():
             if isinstance(layouts, QLabel):
@@ -93,13 +93,13 @@ class Screen(QWidget):
                 if isinstance(widget, QLabel):
                     if widget.objectName() == title:
                         if content.find('.png') != -1:
-                            pixmap = QPixmap(path + '/img/' + content)
+                            pixmap = QPixmap(path + './img/' + content)
                             widget.setPixmap(pixmap)
                         elif content.find('.avi') != -1:
                             widget2 = QVideoWidget(widget)
                             widget2.resize(500, 500)
                             self.player.setMedia(QMediaContent(QUrl.fromLocalFile(
-                                r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\video\test.avi')))
+                                './video/test.avi')))
                             self.btn_play.show()
                             self.btn_play.clicked.connect(lambda: self.play_video(widget2))
                             pass
@@ -151,7 +151,7 @@ class MainScreen(QMainWindow, Screen):
 
     def __init__(self):
         super().__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\AppScreen.ui', self)
+        loadUi('./.ui/AppScreen.ui', self)
         from navigator.Navigator import MainNavigator
         self.setCentralWidget(MainNavigator)
 
@@ -161,7 +161,7 @@ class StartingScreen(QMainWindow, Screen):
     def __init__(self, section: str):
         super().__init__(section)
 
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\page_accueil_centrée.ui', self)
+        loadUi('./.ui/page_accueil_centrée.ui', self)
         self.init_LineEdit()
         self.btn_next.clicked.connect(lambda: self.navigation('MainWindow'))
 
@@ -170,7 +170,7 @@ class MainWindowScreen(QMainWindow, Screen):
 
     def __init__(self):
         super(MainWindowScreen, self).__init__()
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\MainScreen.ui', self)
+        loadUi('./.ui/MainScreen.ui', self)
 
         self.verticalMenu.setFeatures(QDockWidget.NoDockWidgetFeatures)
         self.verticalMenu.setTitleBarWidget(QWidget())
@@ -185,7 +185,7 @@ class StaticScreen(QMainWindow, Screen):
     def __init__(self, section: str, chapter: str = '', screen_number: int = 0, picture: str = ''):
         super().__init__(section, chapter, screen_number, picture)
 
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\Basics\MainBasicsScreen.ui', self)
+        loadUi('./.ui/Basics/MainBasicsScreen.ui', self)
 
         self.init_navigation()
         self.init_Label()
@@ -196,7 +196,7 @@ class DynamicScreen(QMainWindow, Screen):
     def __init__(self, section: str, chapter: str, screen_number: int = 0, picture: str = ''):
         super().__init__(section, chapter, screen_number, picture)
 
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\DynamicScreen.ui', self)
+        loadUi('./.ui/DynamicScreen.ui', self)
 
         self.btn_pdf.clicked.connect(createPDF)
 

@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="permanent">
+    <file>light.png</file>
+    <file>logo-icam.png</file>
+  </qresource>
+</RCC>

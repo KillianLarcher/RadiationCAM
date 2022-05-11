@@ -40,5 +40,5 @@ def createPDF():
             else:
                 pdf.chapter_body(user_report[chapter])
 
-    pdf.output(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\report.pdf')
-    os.startfile(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\report.pdf')
+    pdf.output('report.pdf')
+    os.startfile('report.pdf')
