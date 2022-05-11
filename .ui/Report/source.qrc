@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="dynamic">
+    <file>Image1.png</file>
+  </qresource>
+  <qresource prefix="permanent">
+    <file>logo-icam.png</file>
+    <file>light.png</file>
+  </qresource>
+</RCC>

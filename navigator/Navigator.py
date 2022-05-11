@@ -34,7 +34,7 @@ for section, screen in screens.items():
     for title in datas:
         if not isinstance(datas[title], str):
             for key, value in datas[title].items():
-                MyScreen = screen(section, title, i, "Image1.png")
+                MyScreen = screen(section, title, i, "test.avi")
                 MyScreen.setObjectName(section + str(i))
                 Navigator.addWidget(MyScreen)
                 i = i + 1

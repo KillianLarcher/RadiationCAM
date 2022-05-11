@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="dynamic">
+    <file>Image1.png</file>
+  </qresource>
+</RCC>

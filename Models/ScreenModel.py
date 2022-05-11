@@ -1,4 +1,7 @@
+from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import QPixmap
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
+from PyQt5.QtMultimediaWidgets import QVideoWidget
 from PyQt5.QtWidgets import QLineEdit, QWidget, QStackedLayout, QLabel, QMainWindow, QTextEdit, QDockWidget
 from PyQt5.uic import loadUi
 
@@ -15,6 +18,7 @@ class Screen(QWidget):
         self.chapter = chapter
         self.screen_number = screen_number
         self.picture = picture
+        self.player = QMediaPlayer()
 
         try:
             self.question_text = getDatas('permanent')[self.section][self.chapter]
@@ -70,30 +74,44 @@ class Screen(QWidget):
             self.setLabel("question", self.question_text)
             self.setLabel("image", self.picture)
 
-    def setLabel(self, title: str = '', text: str = ''):
+    def setLabel(self, title: str = '', content: str = ''):
 
-        path = 'C:/Users/Killian Larcher/Documents/GitHub/RadiationCAM/img'
+        path = 'C:/Users/Killian Larcher/Documents/GitHub/RadiationCAM'
 
         for layouts in self.children():
             if isinstance(layouts, QLabel):
                 if layouts.objectName() == title:
-                    if layouts.objectName() == 'image':
-                        pixmap = QPixmap(path+'/'+text)
+                    if content.find('.png') != -1:
+                        pixmap = QPixmap(path + '/img/' + content)
                         layouts.setPixmap(pixmap)
-                    else:
-                        # layouts.setTextFormat(1)
-                        layouts.setText(text)
+                    elif content.find('.avi') != -1:
+                        pass
+                else:
+                    layouts.setText(content)
 
             for widget in layouts.children():
                 if isinstance(widget, QLabel):
                     if widget.objectName() == title:
-                        if widget.objectName() == 'image':
-                            pixmap = QPixmap(path+'/'+text)
+                        if content.find('.png') != -1:
+                            pixmap = QPixmap(path + '/img/' + content)
                             widget.setPixmap(pixmap)
+                        elif content.find('.avi') != -1:
+                            widget2 = QVideoWidget(widget)
+                            widget2.resize(500, 500)
+                            self.player.setMedia(QMediaContent(QUrl.fromLocalFile(
+                                r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\video\test.avi')))
+                            self.btn_play.show()
+                            self.btn_play.clicked.connect(lambda: self.play_video(widget2))
+                            pass
                         else:
-                            widget.setText(text)
+                            widget.setText(content)
 
-    def navigation(self, goto: str):
+    def play_video(self, widget):
+        self.player.setVideoOutput(widget)
+        self.player.play()
+
+    @staticmethod
+    def navigation(goto: str):
 
         from navigator.Navigator import Navigators
         from navigator.Navigator import MainWindow
@@ -178,10 +196,12 @@ class DynamicScreen(QMainWindow, Screen):
     def __init__(self, section: str, chapter: str, screen_number: int = 0, picture: str = ''):
         super().__init__(section, chapter, screen_number, picture)
 
-        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\Report\window_resum.ui', self)
+        loadUi(r'C:\Users\Killian Larcher\Documents\GitHub\RadiationCAM\.ui\DynamicScreen.ui', self)
+
+        self.btn_pdf.clicked.connect(createPDF)
+
+        self.btn_play.hide()
 
         self.init_navigation()
         self.init_LineEdit()
         self.init_Label()
-
-        self.btn_pdf.clicked.connect(createPDF)
