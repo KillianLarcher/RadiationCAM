@@ -1,10 +1,9 @@
 import os
-os.system("pip install -r requirements.txt")
-
 import sys
 from PyQt5.QtWidgets import QApplication
-
 from Models.ScreenModel import MainScreen
+
+os.system("pip install -r requirements.txt")
 
 app = QApplication(sys.argv)
 main_screen = MainScreen()

@@ -159,9 +159,9 @@ class MainScreen(QMainWindow, Screen):
 class StartingScreen(QMainWindow, Screen):
 
     def __init__(self, section: str):
-        super().__init__(section)
+        super(StartingScreen, self).__init__(section)
 
-        loadUi('./.ui/page_accueil_centrée.ui', self)
+        loadUi('./.ui/StartingScreen.ui', self)
         self.init_LineEdit()
         self.btn_next.clicked.connect(lambda: self.navigation('MainWindow'))
 
@@ -185,7 +185,7 @@ class StaticScreen(QMainWindow, Screen):
     def __init__(self, section: str, chapter: str = '', screen_number: int = 0, picture: str = ''):
         super().__init__(section, chapter, screen_number, picture)
 
-        loadUi('./.ui/Basics/MainBasicsScreen.ui', self)
+        loadUi('./.ui/StaticScreen.ui', self)
 
         self.init_navigation()
         self.init_Label()

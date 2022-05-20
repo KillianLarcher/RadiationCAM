@@ -7,7 +7,7 @@ user = './datas/user_datas.json'
 def getDatas(filename: str):
     global user, permanent
     file = user if filename == 'user' else permanent
-    with open(file, "r") as f:
+    with open(file, "r", encoding='utf-8') as f:
         datas = json.load(f)
         return datas
 

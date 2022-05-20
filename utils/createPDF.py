@@ -8,7 +8,7 @@ from utils.dataManager import getDatas
 
 def createPDF():
     title = 'RadiationCAM Report'
-    name = getDatas('user')['PERSONAL']['name1'] + "   " + getDatas('user')['PERSONAL']['name2'] + "   " + getDatas('user')['PERSONAL']['name3']
+    name = getDatas('user')['PERSONAL']['name1'] + "   " + getDatas('user')['PERSONAL']['name2'] + "   " + getDatas('user')['PERSONAL']['name3'] + "   " + getDatas('user')['PERSONAL']['promotion']
     print(name)
 
     pdf = PDF(title, name)

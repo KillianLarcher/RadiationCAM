@@ -1,35 +1,37 @@
 {
   "BASIC": {
-    "1": "Définition de la thermographie infrarouge\nLa thermographie infrarouge est une technique permettant d’obtenir, au moyen d’un\nappareillage approprié, l’image thermique observée dans un domaine spectral de\nl’infrarouge. (Définition donnée par l’Afnor).\n\nAu-dessus du zéro absolu, tous les corps qui nous entourent produisent un\nrayonnement thermique.\nLe rayonnement infrarouge est une onde électromagnétique dont la longueur est comprise entre 0,8μm et 1000μm ; à partir de 125μm, ces ondes se chevauchent avec les ondes radio électriques.\n",
-    "2": "Comme indiqué sur le spectre ci-dessous, la zone d’utilisation de la plupart des\ncaméras actuellement sur le marché se situe entre 5μm et 10μm. \n\n\n"
+    "Definition de la thermographie infrarouge": "La thermographie infrarouge est une technique permettant d’obtenir,\n au moyen d’un appareillage approprie, l’image thermique observee \ndans un domaine spectral de l’infrarouge..\n\nAu-dessus du zero absolu, tous les corps qui nous entourent produisent un\nrayonnement thermique.\nLe rayonnement infrarouge est une onde electromagnetique dont la longueur \nest comprise entre 0,8μm et 1000μm ; a partir de 125μm, ces ondes \nse chevauchent avec les ondes radio electriques.\n",
+    "Utilisation des cameras": "Comme indique sur le spectre ci-dessous, la zone d’utilisation de la plupart des\ncameras actuellement sur le marche se situe entre 5μm et 10μm. \n\n\n"
   },
   "MATERIAL": {
-    "1": "Caméra",
-    "2": "lamp",
-    "3": "electrical resistance box"
+    "Camera": "Camera explanation",
+    "Lamp": "lamp explanation",
+    "Electrical resistance box": "electrical resistance box explanation"
   },
   "REPORT": {
     "SURFACE OBSERVATION": {
-      "1": "Not painted aluminium surface \nWrite what do you observe? \nWhat is the disadvantage of such a surface for infrared measurements?",
-      "2": "Black painted aluminium surface",
-      "3": "Glass surface"
+      "1": "Not painted aluminium surface \n\nWrite what do you observe? \nWhat is the disadvantage of such a surface for infrared measurements?",
+      "2": "Black painted aluminium surface \n\nWrite what do you observe? \nExplain why the measure is more realistic in comparison to \nthe aluminum surface temperature measurement.",
+      "3": "Glass surface \n\nWrite what do you observe? \nComment on the properties of the glass in the field of the visible \n and infrared. Do the same by placing this time, the thin PVC sheet. \nWhat do you observe compared to the previous experience?"
     },
     "CONTACT TEMPERATURE OBSERVATION": {
-      "4": "Question 1",
-      "5": "Question 2",
-      "6": "Question 3"
+      "4": "Question 1 \n\nWrite what do you observe?\nIR T foam ?\nIR T aluminum ?",
+      "5": "Question 2 \n\nUsing your documents, calculate the temperature of contact between \nyour skin and the foam and between your skin and the aluminum plate \nconsidering that samples are at 23C and your skin at 37C."
     },
     "THERMAL APPROACH OF ELECTRIC PHENOMENA": {
-      "7": "Question 1",
-      "8": "Question 2",
-      "9": "Question 3"
+      "6": "Question 1 \n\nWrite what do you observe?",
+      "7": "Question 2 \n\nKnowing that the bulb is composed of a glass, a filament and a gas \nenvelope, what is the temperature element of the bulb you measure?\nIR T at 6V ? \nIR T at 12V ?\n",
+      "8": "Question 3 \n\nWhat type of connection ?\n",
+      "9": "Question 4 \n\nNote that the resistances are 100, 150 and 180 Ohms. Based on \nthe infrared image taken with the IR camera, identify the three \nresistors (upper, middle, lower).\nWrite a conclusion",
+      "10": "Question 5 \n\nWhat type of connection ?\n",
+      "11": "Question 6 \n\nNote that the resistances are 100, 150 and 180 Ohms. Based on \nthe infrared image taken with the IR camera, identify the three \nresistors (upper, middle, lower).\nWrite a conclusion"
     },
     "HEAT TRANSFER IN FINS": {
-      "10": "Question 1",
-      "11": "Question 2",
-      "12": "Question 3 fin"
+      "12": "Question 1 \n\nWrite what do you observe?\n",
+      "13": "Question 2 \n\nLes 4 images infrarouges ci-dessous ont ete prises a differents \ninstants apres avoir declenche le chauffage de la plaque chauffante. En justifiant vos choix,\nrangez ces images dans l ordre chronologique. \n",
+      "14": "Question 3 \n\nIdentifiez les differentes ailettes (aluminium, acier et PVC) sur les images\nprecedentes (justifiez votre choix) "
     },
-    "CONCLUSION": "text"
+    "CONCLUSION": "Add a conclusion"
   }
 }
 
